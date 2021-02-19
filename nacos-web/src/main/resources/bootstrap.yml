@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: nacos-web
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.68.10:8848
+      config:
+        server-addr: 192.168.68.10:8848
+        file-extension: yml
+        prefix: ${spring.application.name}
+        shared-dataids: common.yml
+        #哪些共享配置支持动态刷新，如多个使用逗号分隔
+        refreshable-dataids: common.yml
+server:
+  port: 9100
+#健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# 日志
+logging:
+  level:
+    org.springframework.web: debug
